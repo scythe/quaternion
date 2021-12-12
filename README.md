@@ -85,11 +85,11 @@ Now let's consider a rotation *D*{***P***,θ} in the plane ***P***. We should fi
 
 and since we know that rotation is a linear transformation, we can write
 
-[$D_{\mathbf{P},\theta}(\overrightharpoon{r}) = \alpha D_{\mathbf{P},\theta}(\overrightharpdown{P_1}) \beta D_{\mathbf{P},\theta}(\overrightharpdown{P_2}) + \gamma D_{\mathbf{P},\theta}(\overrightharpdown{P_3}) + \delta D_{\mathbf{P},\theta}(\overrightharpdown{P_4}) = \pmatrix{\alpha \cos \theta - \beta \sin \theta \\ \beta \cos \theta + \alpha \sin \theta \\ \gamma \\ \delta}$]::
+[$$\mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharp{r}) = \alpha D_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_1) +  \beta \mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_2) + \gamma \mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_3) + \delta \mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_4) = \begin{pmatrix}\alpha \cos \theta - \beta \sin \theta \\ \beta \cos \theta + \alpha \sin \theta \\ \gamma \\ \delta \end{pmatrix}$$]::
 
 So we can define another plane which is totally unaffected by rotations in the plane ***P***:
 
-[$\mathbf{P}^{\bot} = {\alpha\overrightharpdown{P_3} + \beta\overrightharpdown{P_4} | \alpha, \beta \in \mathbb{R}} = {\overrightharpoon{s} | \overrightharpoon{s} \in \mathbb{R}^4, \forall \overrightharpoon{r} \in \mathbf{P}, \overrightharpoon{r} \dot \overrightharpoon{s} = 0}$]::
+[$$\mathbf{P}^{\bot} = \{\alpha\overrightharpdown{P}_3 + \beta\overrightharpdown{P}_4 | \alpha, \beta \in \mathbb{R} \} = \{ \overrightharp{s} | \overrightharp{s} \in \mathbb{R}^4, \forall \overrightharp{r} \in \mathbf{P}, \overrightharp{r}  \cdot \overrightharp{s} = 0 \}$$]::
 
 Now what happens with rotations in this plane? We expect to find (the reader can easily check):
 
@@ -97,7 +97,7 @@ Now what happens with rotations in this plane? We expect to find (the reader can
 
 We are ready to learn the **first unexpected fact** about rotations in 4-space:
 
-[$D_{\mathbf{P}^{\bot},\phi}(D_{\mathbf{P},\theta}(\overrightharpoon{r}) = \pmatrix{\alpha \cos \theta - \beta \sin \theta \\ \beta \cos \theta + \alpha \sin \theta \\ \gamma \cos \phi - \delta \sin \phi \\ \delta \cos \phi + \gamma \sin \phi} = D_{\mathbf{P},\theta}(D_{\mathbf{P}^{\bot},\phi}(\overrightharpoon{r})$]::
+[$$\mathcal{D}_{\mathbf{P}^{\bot}}^{\phi}(\mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharp{r})) = \begin{pmatrix}\alpha \cos \theta - \beta \sin \theta \\ \beta \cos \theta + \alpha \sin \theta \\ \gamma \cos \phi - \delta \sin \phi \\ \delta \cos \phi + \gamma \sin \phi \end{pmatrix} = \mathcal{D}_{\mathbf{P}}^{\theta}(\mathcal{D}_{\mathbf{P}^{\bot}}^{\phi}(\overrightharp{r}))$$]::
 
 The above equation shows that rotations about ***P*** and ***P***^⊥ commute with each other! This is a striking contrast from the case of three dimensions.
 This happens because every ray in ***P*** is orthogonal to ***P***^⊥, and every ray in ***P***^⊥ is orthogonal to ***P***, which is not possible
@@ -120,7 +120,7 @@ and we define a multiplication on these points by choosing one axis to be the "r
 
 and William Rowan Hamilton famously discovered that we can define an associative, distributive and invertible multiplication on these 4-vectors as follows:
 
-[$\hat{q}\hat{p} = q_R p_R - \overrightharpoon{q_V} \dot \overrightharpoon{p_V} + q_R \overrightharpoon{p_V} + p_R \overrightharpoon{q_V} + \overrightharpoon{q_V} \cross \overrightharpoon{p_V}$]::
+[$\hat{q}\hat{p} = q_R p_R - \overrightharpoon{q_V} \dot \overrightharpoon{p_V} + q_R \overrightharpoon{p_V} + p_R \overrightharpoon{q_V} + \overrightharpoon{q_V} \times \overrightharpoon{p_V}$]::
 
 That this multiplication satisfies the associative and distributive axioms can be found in any number of sources which introduce quaternion algebra,
 and [the Wikipedia article](http://en.wikipedia.org/wiki/Quaternion) is generally sufficient. We can also write this as a consequence of Hamilton's equation
@@ -166,9 +166,9 @@ In this case we have:
 What about the second component? According to the multiplication described above, and noting that the dot product is zero (by orthogonality)
 and the perpendicular component has no real part, we must have:
 
-[$\hat{q}_{\mathbf{R}_i}^{\bot}\hat{u}(\theta) = \hat{q}_{\mathbf{R}_i}^{\bot}u(\theta)_R + \hat{q}_{\mathbf{R}_i}^{\bot} \cross \overrightarrow{u}(\theta)_V$]::
+[$\hat{q}_{\mathbf{R}_i}^{\bot}\hat{u}(\theta) = \hat{q}_{\mathbf{R}_i}^{\bot}u(\theta)_R + \hat{q}_{\mathbf{R}_i}^{\bot} \times \overrightarrow{u}(\theta)_V$]::
 
-[$ = \cos(\theta)\hat{q}_{\mathbf{R}_i}^{\bot} + \sin(\theta)(\hat{q}_{\mathbf{R}_i}^{\bot} \cross i)$]::
+[$ = \cos(\theta)\hat{q}_{\mathbf{R}_i}^{\bot} + \sin(\theta)(\hat{q}_{\mathbf{R}_i}^{\bot} \times i)$]::
 
 [$ = \gamma \cos(\theta) j + \delta \cos(\theta) k - \gamma \sin(\theta) k + \delta \sin(\theta) j$]::
 
@@ -211,9 +211,9 @@ Since two quaternions with only (1, i) components will commute with each other, 
 
 What about the other component? Applying the multiplication formula,
 
-[$\hat{q}_{\mathbf{R}_i}^{\bot}\hat{u}(\theta) = u(\theta)_R\hat{q}_{\mathbf{R}_i}^{\bot} + \overrightarrow{u}(\theta)_V \cross \hat{q}_{\mathbf{R}_i}^{\bot}$]::
+[$\hat{q}_{\mathbf{R}_i}^{\bot}\hat{u}(\theta) = u(\theta)_R\hat{q}_{\mathbf{R}_i}^{\bot} + \overrightarrow{u}(\theta)_V \times \hat{q}_{\mathbf{R}_i}^{\bot}$]::
 
-[$ = \cos(\theta)\hat{q}_{\mathbf{R}_i}^{\bot} + \sin(\theta)(i \cross \hat{q}_{\mathbf{R}_i}^{\bot})$]::
+[$ = \cos(\theta)\hat{q}_{\mathbf{R}_i}^{\bot} + \sin(\theta)(i \times \hat{q}_{\mathbf{R}_i}^{\bot})$]::
 
 [$ = \gamma \cos(\theta) j + \delta \cos(\theta) k + \gamma \sin(\theta) k - \delta \sin(\theta) j$]::
 
@@ -263,9 +263,9 @@ First, we need a lemma.
 
 Suppose u is a unit vector, and consider its square in quaternion multiplication. We have:
 
-[$\hat{u}\hat{u} = - \overrightharpdown{u} \dot \overrightharpdown{u} + \overrightharpdown{u} \cross \overrightharpdown{u} = -1$]::
+[$\hat{u}\hat{u} = - \overrightharpdown{u} \dot \overrightharpdown{u} + \overrightharpdown{u} \times \overrightharpdown{u} = -1$]::
 
-In other words, quaternions do not just define two new square roots of -1; instead, there is a whole 3-sphere of possible square roots
+In other words, quaternions do not just define two new square roots of -1; instead, there is a whole 2-sphere of possible square roots
 of -1. This is why quaternions are generally interpreted as an algebra over the reals rather than a field extension as with **C**.
 
 ## Another way to represent unit quaternions
@@ -276,7 +276,7 @@ Now consider an arbitrary unit quaternion. By the definition of the Euclidean no
 
 so we write out the product
 
-[$\hat{g}\hat{g}* = g_R^2 + g_R \overrightharpoon{g_V} - \overrightharpoon{g_V} g_R + \overrightharpoon{g_V} \dot \overrightharpoon{g_V} - \overrightharpoon{g_V} \cross \overrightharpoon{g_V}$]::
+[$\hat{g}\hat{g}* = g_R^2 + g_R \overrightharpoon{g_V} - \overrightharpoon{g_V} g_R + \overrightharpoon{g_V} \dot \overrightharpoon{g_V} - \overrightharpoon{g_V} \times \overrightharpoon{g_V}$]::
 
 [$ = g_R^2 + |\overrightharpoon{g_V}|^2 = g_R^2 + g_V^2 = 1$]::
 
@@ -321,7 +321,7 @@ coordinates, but I think it is better to be as explicit as possible):
 You can probably guess by now what is going to happen to the perpendicular component. But first we need to define the orthogonal plane.
 According to the usual properties of the cross product:
 
-[$(\overrightharpdown{u_g} \cross \overrightharpdown{u_q}) \dot \overrightharpdown{u_g} = (\overrightharpdown{u_g} \cross \overrightharpdown{u_q}) \dot \overrightharpdown{u_q} = 0$]::
+[$$(\overrightharpdown{u}_q \times \overrightharpdown{u}_g) \cdot \overrightharpdown{u}_q = (\overrightharpdown{u}_q \times \overrightharpdown{u}_g) \cdot \overrightharpdown{u}_g = 0$$]::
 
 so the cross product gives a fourth basis vector u<sub>qg</sub> which is orthogonal to u<sub>g</sub> and u<sub>q</sub>, providing a parameterization of the orthogonal plane
 and also another basis for the whole set of quaternions:
@@ -338,7 +338,7 @@ So we can write:
 
 Once again we obtain an expression involving rotations in two fully orthogonal planes applied to the components of *q* which lie in each plane:
 
-[$\hat{q}\hat{g} = D_{1, u_g, \theta}(\hat{q}_{\mathbf{R}_g}^{\parallel}) + D_{u_q, u_{qg}, \theta}(\hat{q}_{\mathbf{R}_g}^{\bot})$]::
+[$$\hat{q}\hat{g} = \mathcal{D}_{1 \rightarrow u_g}^{\theta}(\hat{q}_{\mathbf{R}_g}^{\parallel}) + \mathcal{D}_{u_q \rightarrow u_{qg}}^{\theta}(\hat{q}_{\mathbf{R}_g}^{\bot})$$]::
 
 We can combine these rotations just as we did before: they do not affect the "opposite" component due to orthogonality, and they commute because
 they are in fully orthogonal planes. Therefore, we have reached the promised **geometric interpretation of multiplication by any unit quaternion**:
@@ -405,7 +405,7 @@ find *hg* if you only know *gh*: consider the case where g = i, h = j, or g = 1,
 
 In contrast, if we are using the conjugate rotations, we find that
 
-[$\hat{g}^{-1} \hat{h}^{-1} \hat{q} \hat{h} \hat{g} = (\hat{h} \hat{g})^{-1) \hat{q} \hat{h} \hat{g} = D_{\mathbf{Q}_g, u_g, 2\theta_g}(D_{\mathbf{Q}_h, u_h, 2\theta_h}(\hat{q}))$]::
+[$$\hat{g}^{-1} \hat{h}^{-1} \hat{q} \hat{h} \hat{g} = (\hat{h} \hat{g})^{-1} \hat{q} (\hat{h} \hat{g}) = \mathcal{D}_{\mathbf{Q}_g, u_g}^{2\theta_g}(\mathcal{D}_{\mathbf{Q}_h, u_h}^{2\theta_h}(\hat{q}))$$]::
 
 So in order to combine rotations in this formalism, we just take the product *hg*! We have the "limitation" that we can only rotate orthogonally to the real axis, but since
 we were originally interested only in 3-space rotations, this actually becomes an advantage.
@@ -470,18 +470,18 @@ So if we use the conjugate definition of rotation, we can also multiply our rota
 
 Suppose we wanted an associative cross product. We have a problem:
 
-[$i \cross (i \cross j) = i \cross k = -j \neq (i \cross i) \cross j = 0 \cross j = 0$]::
+[$i \times (i \times j) = i \times k = -j \neq (i \times i) \times j = 0 \times j = 0$]::
 
 This is annoying. But we can see that the problem would go away if we could somehow define
 
-[$i \cross^A i = -1$]::
+[$i \times^A i = -1$]::
 
 Here I have used the superscript *A* to denote the "associativization" of the cross product. If we replace i → j → k → i in the above
 equations, we end up with the similar identities
 
-[$j \cross^A j = -1$]::
+[$j \times^A j = -1$]::
 
-[$k \cross^A k = -1$]::
+[$k \times^A k = -1$]::
 
 In fact this "just works", and if you extrapolate from this "associativized" cross product,
 you reproduce the *exact* form of Hamilton's equations!
