@@ -51,7 +51,7 @@ by translation along one axis and then the other. Translation of a distance *d* 
 When we fix a unit vector, we also choose a direction for the axis. That means that for any plane ***P***, we should be able to choose *two* unit vectors, and *parameterize*
 the plane by two coordinates *α*, *β*, so that:
 
-![$\mathbf{P} = {\alpha\overrightharpdown{P}_1 + \beta\overrightharpdown{P}_2 | \alpha, \beta \in \mathbb{R}, \overrightharpdown{P}_1 \dot \overrightharpdown{P}_2 = 0}$](latex/equations/54.png)
+![$\mathbf{P} = {\alpha\overrightharpdown{P}_1 + \beta\overrightharpdown{P}_2 | \alpha, \beta \in \mathbb{R}, \overrightharpdown{P}_1 \cdot \overrightharpdown{P}_2 = 0}$](latex/equations/54.png)
 
 Here we are using [set-builder notation](http://en.wikipedia.org/wiki/Set-builder_notation) which says, roughly, "***P*** is the set of all points formed by linear combinations
 of two orthogonal unit vectors", although we have not defined the vectors. In fact, we only need to require that the vectors are not parallel, but it makes our life (much!)
@@ -60,16 +60,16 @@ easier to require that they are orthogonal.
 Now we could proceed to an abstract argument about rotation in any plane, but since we are interested in 4-space, let's create a plane in 4-space. For any point in 4-space,
 we can write:
 
-![$\overrightharp{r} = \pmatrix{\alpha \\ \beta \\ \gamma \\ \delta}$](latex/equations/63.png)
+![$\overrightharp{r} = \begin{pmatrix}\alpha \\ \beta \\ \gamma \\ \delta \end{pmatrix}$](latex/equations/63.png)
 
 so why don't we choose the unit vectors
 
-![$\overrightharpdown{P}_1, \overrightharpdown{P}_2 = \pmatrix{1 \\ 0 \\ 0 \\ 0}, \pmatrix{0 \\ 1 \\ 0 \\ 0}$](latex/equations/67.png)
+![$\overrightharpdown{P}_1, \overrightharpdown{P}_2 = \begin{pmatrix}1 \\ 0 \\ 0 \\ 0 \end{pmatrix} , \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}$](latex/equations/67.png)
 
 Consider the contrast with the three-dimensional case. For a plane in three dimensions, there is exactly one unit
 vector which is orthogonal to both of the planar axes. But here, we have two normal vectors:
 
-![$\overrightharpdown{P}_3, \overrightharpdown{P}_4 = \pmatrix{0 \\ 0 \\ 1 \\ 0}, \pmatrix{0 \\ 0 \\ 0 \\ 1}: \overrightharpdown{P}_i \dot \overrightharpdown{P}_j = \delta_{ij}$](latex/equations/72.png)
+![$\overrightharpdown{P}_3, \overrightharpdown{P}_4 =  \begin{pmatrix} 0 \\ 0 \\ 1 \\ 0 \end{pmatrix} ,  \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix} : \overrightharpdown{P}_i \cdot \overrightharpdown{P}_j = \delta_{ij}$](latex/equations/72.png)
 
 Here δ(i,j), usually written with i and j as subscripts, represents the [Kronecker delta](http://en.wikipedia.org/wiki/Kronecker_delta), which returns 1 if i = j, and 0 otherwise.
 
@@ -93,7 +93,7 @@ So we can define another plane which is totally unaffected by rotations in the p
 
 Now what happens with rotations in this plane? We expect to find (the reader can easily check):
 
-![$\mathcal{D}_{\mathbf{P}^{\bot}}^{\phi}(\overrightharp{r}) = \pmatrix{\alpha \\ \beta \\ \gamma \cos \phi - \delta \sin \phi \\ \delta \cos \phi + \gamma \sin \phi}$](latex/equations/96.png)
+![$\mathcal{D}_{\mathbf{P}^{\bot}}^{\phi}(\overrightharp{r}) = \begin{pmatrix} \alpha \\ \beta \\ \gamma \cos \phi - \delta \sin \phi \\ \delta \cos \phi + \gamma \sin \phi \end{pmatrix} $](latex/equations/96.png)
 
 We are ready to learn the **first unexpected fact** about rotations in 4-space:
 
@@ -120,7 +120,7 @@ and we define a multiplication on these points by choosing one axis to be the "r
 
 and William Rowan Hamilton famously discovered that we can define an associative, distributive and invertible multiplication on these 4-vectors as follows:
 
-![$\hat{q}\hat{p} = q_R p_R - \overrightharp{q}_V \dot \overrightharp{p}_V + q_R \overrightharp{p}_V + p_R \overrightharp{q}_V + \overrightharp{q}_V \times \overrightharp{p}_V$](latex/equations/123.png)
+![$\hat{q}\hat{p} = q_R p_R - \overrightharp{q}_V \cdot \overrightharp{p}_V + q_R \overrightharp{p}_V + p_R \overrightharp{q}_V + \overrightharp{q}_V \times \overrightharp{p}_V$](latex/equations/123.png)
 
 That this multiplication satisfies the associative and distributive axioms can be found in any number of sources which introduce quaternion algebra,
 and [the Wikipedia article](http://en.wikipedia.org/wiki/Quaternion) is generally sufficient. We can also write this as a consequence of Hamilton's equation
@@ -263,7 +263,7 @@ First, we need a lemma.
 
 Suppose u is a unit vector, and consider its square in quaternion multiplication. We have:
 
-![$\hat{u}\hat{u} = - \overrightharpdown{u} \dot \overrightharpdown{u} + \overrightharpdown{u} \times \overrightharpdown{u} = -1$](latex/equations/266.png)
+![$\hat{u}\hat{u} = - \overrightharpdown{u} \cdot \overrightharpdown{u} + \overrightharpdown{u} \times \overrightharpdown{u} = -1$](latex/equations/266.png)
 
 In other words, quaternions do not just define two new square roots of -1; instead, there is a whole 2-sphere of possible square roots
 of -1. This is why quaternions are generally interpreted as an algebra over the reals rather than a field extension as with **C**.
@@ -276,7 +276,7 @@ Now consider an arbitrary unit quaternion. By the definition of the Euclidean no
 
 so we write out the product
 
-![$\hat{g}\hat{g}* = g_R^2 + g_R \overrightharp{g}_V - \overrightharp{g}_V g_R + \overrightharp{g}_V \dot \overrightharp{g}_V - \overrightharp{g}_V \times \overrightharp{g}_V$](latex/equations/279.png)
+![$\hat{g}\hat{g}* = g_R^2 + g_R \overrightharp{g}_V - \overrightharp{g}_V g_R + \overrightharp{g}_V \cdot \overrightharp{g}_V - \overrightharp{g}_V \times \overrightharp{g}_V$](latex/equations/279.png)
 
 ![$ = g_R^2 + |\overrightharp{g}_V|^2 = g_R^2 + g_V^2 = 1$](latex/equations/281.png)
 
@@ -307,7 +307,7 @@ where we define the parallel component in the usual way, and for the perpendicul
 
 ![$\hat{q}_{\mathbf{R}_g}^{\parallel} = q_R + q_g \overrightharpdown{u}_g \text{ and } \hat{q}_{\mathbf{R}_g}^{\bot} = q_{\bot} \overrightharpdown{u}_q$](latex/equations/308.png)
 
-![$\text{ where we have } |\overrightharpdown{u}_q| = 1 \text{ and } \overrightharpdown{u}_g \dot \overrightharpdown{u}_q = 0$](latex/equations/310.png)
+![$\text{ where we have } |\overrightharpdown{u}_q| = 1 \text{ and } \overrightharpdown{u}_g \cdot \overrightharpdown{u}_q = 0$](latex/equations/310.png)
 
 Now obtaining a geometrical interpretation of what happens to the in-plane component is very similar to last time (we could express all of this by changing
 coordinates, but I think it is better to be as explicit as possible):
@@ -332,7 +332,7 @@ So we can write:
 
 ![$\hat{q}_{\mathbf{R}_g}^{\bot}\hat{g} = (q_{\bot} \overrightharpdown{u}_q)(\cos(\theta) + \sin(\theta)\overrightharpdown{u}_g)$](latex/equations/333.png)
 
-![$ = \q_{bot} (\cos(\theta) \overrightharpdown{u}_q + \sin(\theta) \overrightharpdown{u}_{qg})$](latex/equations/335.png)
+![$ = q_{bot} (\cos(\theta) \overrightharpdown{u}_q + \sin(\theta) \overrightharpdown{u}_{qg})$](latex/equations/335.png)
 
 ![$ = \mathcal{D}_{u_q, u_{qg}, \theta}(\hat{q}_{\mathbf{R}_g}^{\bot}\hat{g})$](latex/equations/337.png)
 
@@ -363,7 +363,7 @@ For the perpendicular component we find an inversion:
 
 ![$\hat{g}\hat{q}_{\mathbf{R}_g}^{\bot} = (\cos(\theta) + \sin(\theta)\overrightharpdown{u}_g)(q_{\bot} \overrightharpdown{u}_q)$](latex/equations/364.png)
 
-![$ = \q_{bot} (\cos(\theta) \overrightharpdown{u}_q - \sin(\theta) \overrightharpdown{u}_{qg})$](latex/equations/366.png)
+![$ = q_{bot} (\cos(\theta) \overrightharpdown{u}_q - \sin(\theta) \overrightharpdown{u}_{qg})$](latex/equations/366.png)
 
 ![$ = \mathcal{D}_{u_q, u_{qg}}^{ -\theta}(\hat{q}_{\mathbf{R}_g}^{\bot}\hat{g})$](latex/equations/368.png)
 
