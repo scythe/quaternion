@@ -21,7 +21,9 @@ Here's the takeaway from this blog post:
 
 When we combine this with a simple fact about rotations in 3D --- the fact that any rotation in three dimensions equates to rotation in a *single* plane --- we are eventually led to the famous rotation formula for 3-vectors in a quaternion algebra, which looks like this:
 
-[$\mathcal{D}_{\overrightharpdown{n}}^{\theta}(\overrightharp{v}) = \hat{q}^{-1}\hat{v}\hat{q} \text{ where } \hat{q} = \sqrt{\cos(\theta) + \sin(\theta)\hat{n}} = \cos(\theta/2) + \sin(\theta/2)\hat{n}$]::
+[$\mathcal{D}_{\overrightharpdown{n}}^{\theta}(\overrightharp{v}) = \hat{q}^{-1}\hat{v}\hat{q} \text{ where } \hat{q} = \sqrt{\cos(\theta) + \sin(\theta)\hat{n}}$]::
+
+[$\text{ equivalently } \; \hat{q} = \cos(\theta/2) + \sin(\theta/2)\hat{n}$]::
 
 In the above expressions, we replace the vector and unit-vector diacritics from *v* and *n* on the right-hand side
 because we are now treating them as quaternions, rather than vectors. You might be wondering why I put that
@@ -44,16 +46,22 @@ Now in order to make any sense of this, we need an understanding of what a pair 
 are either parallel or coincide in a line. But quaternions occur in 4-space, so we need to think about 4-space. 
 
 What is a plane in 4-space? Well, what is a plane in *any* Euclidean space? A plane has two orthogonal axes, and we can get to any point from the origin
-by translation along one axis and then the other. Translation of a distance *d* along an axis ***A*** in Euclidean space can be represented by adding the vector
+by translation along one axis and then the other. Translation of a distance *d* along an axis **A** in Euclidean space can be represented by adding the vector
 
-[$\overrightharp{tr}(\mathbf{A},d) = d\overrightharpdown{u}_A \text{ where } \overrightharpdown{u}_A \text{ is a unit vector parallel to } \mathbf{A}$]::
+[$\overrightharp{tr}(\mathbf{A},d) = d\overrightharpdown{u}_A$]::
 
-When we fix a unit vector, we also choose a direction for the axis. That means that for any plane ***P***, we should be able to choose *two* unit vectors, and *parameterize*
+where 
+
+[$\overrightharpdown{u}_A$]::
+
+is a unit vector parallel to **A**
+
+When we fix a unit vector, we also choose a direction for the axis. That means that for any plane **P**, we should be able to choose *two* unit vectors, and *parameterize*
 the plane by two coordinates *α*, *β*, so that:
 
 [$\mathbf{P} = {\alpha\overrightharpdown{P}_1 + \beta\overrightharpdown{P}_2 | \alpha, \beta \in \mathbb{R}, \overrightharpdown{P}_1 \cdot \overrightharpdown{P}_2 = 0}$]::
 
-Here we are using [set-builder notation](http://en.wikipedia.org/wiki/Set-builder_notation) which says, roughly, "***P*** is the set of all points formed by linear combinations
+Here we are using [set-builder notation](http://en.wikipedia.org/wiki/Set-builder_notation) which says, roughly, "**P** is the set of all points formed by linear combinations
 of two orthogonal unit vectors", although we have not defined the vectors. In fact, we only need to require that the vectors are not parallel, but it makes our life (much!)
 easier to require that they are orthogonal. 
 
@@ -73,7 +81,7 @@ vector which is orthogonal to both of the planar axes. But here, we have two nor
 
 Here δ(i,j), usually written with i and j as subscripts, represents the [Kronecker delta](http://en.wikipedia.org/wiki/Kronecker_delta), which returns 1 if i = j, and 0 otherwise.
 
-Now let's consider a rotation *D*{***P***,θ} in the plane ***P***. We should find that:
+Now let's consider a rotation *D*{**P**,θ} in the plane **P**. We should find that:
 
 [$\mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_1 = \cos(\theta)\overrightharpdown{P}_1 + \sin(\theta)\overrightharpdown{P}_2$]::
 
@@ -85,9 +93,11 @@ Now let's consider a rotation *D*{***P***,θ} in the plane ***P***. We should fi
 
 and since we know that rotation is a linear transformation, we can write
 
-[$$\mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharp{r}) = \alpha \mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_1) +  \beta \mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_2) + \gamma \mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_3) + \delta \mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_4) = \begin{pmatrix}\alpha \cos \theta - \beta \sin \theta \\ \beta \cos \theta + \alpha \sin \theta \\ \gamma \\ \delta \end{pmatrix}$$]::
+[$$\mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharp{r}) = \alpha \mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_1) +  \beta \mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_2) + \gamma \mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_3) + \delta \mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharpdown{P}_4)$$]::
 
-So we can define another plane which is totally unaffected by rotations in the plane ***P***:
+[$$ = \begin{pmatrix}\alpha \cos \theta - \beta \sin \theta \\ \beta \cos \theta + \alpha \sin \theta \\ \gamma \\ \delta \end{pmatrix}$$]::
+
+So we can define another plane which is totally unaffected by rotations in the plane **P**:
 
 [$$\mathbf{P}^{\bot} = \{\alpha\overrightharpdown{P}_3 + \beta\overrightharpdown{P}_4 | \alpha, \beta \in \mathbb{R} \} = \{ \overrightharp{s} | \overrightharp{s} \in \mathbb{R}^4, \forall \overrightharp{r} \in \mathbf{P}, \overrightharp{r}  \cdot \overrightharp{s} = 0 \}$$]::
 
@@ -99,17 +109,17 @@ We are ready to learn the **first unexpected fact** about rotations in 4-space:
 
 [$$\mathcal{D}_{\mathbf{P}^{\bot}}^{\phi}(\mathcal{D}_{\mathbf{P}}^{\theta}(\overrightharp{r})) = \begin{pmatrix}\alpha \cos \theta - \beta \sin \theta \\ \beta \cos \theta + \alpha \sin \theta \\ \gamma \cos \phi - \delta \sin \phi \\ \delta \cos \phi + \gamma \sin \phi \end{pmatrix} = \mathcal{D}_{\mathbf{P}}^{\theta}(\mathcal{D}_{\mathbf{P}^{\bot}}^{\phi}(\overrightharp{r}))$$]::
 
-The above equation shows that rotations about ***P*** and ***P***^⊥ commute with each other! This is a striking contrast from the case of three dimensions.
-This happens because every ray in ***P*** is orthogonal to ***P***^⊥, and every ray in ***P***^⊥ is orthogonal to ***P***, which is not possible
+The above equation shows that rotations about **P** and **P**^⊥ commute with each other! This is a striking contrast from the case of three dimensions.
+This happens because every ray in **P** is orthogonal to **P**^⊥, and every ray in **P**^⊥ is orthogonal to **P**, which is not possible
 if we only have three spatial dimensions.
 
-It is a *little* harder to see that every point unaffected by *D*{***P***,θ} lies in ***P***^⊥, but still basically straightforward. Since Euclidean space
+It is a *little* harder to see that every point unaffected by *D*{**P**,θ} lies in **P**^⊥, but still basically straightforward. Since Euclidean space
 is highly symmetric, we expect this property to be true for any plane: there is a unique "planar axis" comprising all of the points unaffected by rotations
 in any plane, and these form a pair of fully orthogonal planes, and rotations in these fully orthogonal planes commute with each other.
 
-This is easy to prove using "conventional" linear algebra: for any plane ***Q***, we can define a rotation matrix that maps the unit vectors defining ***P***
-onto the unit vectors defining ***Q***, and then applying this matrix to the unit vectors in ***P***^⊥ will give orthogonal unit vectors that describe the
-desired normal plane ***Q***^⊥. This proof is a standard application of the change-of-basis formulas, and it is rather long and jejune, so it is omitted for brevity.
+This is easy to prove using "conventional" linear algebra: for any plane **Q**, we can define a rotation matrix that maps the unit vectors defining **P**
+onto the unit vectors defining **Q**, and then applying this matrix to the unit vectors in **P**^⊥ will give orthogonal unit vectors that describe the
+desired normal plane **Q**^⊥. This proof is a standard application of the change-of-basis formulas, and it is rather long and jejune, so it is omitted for brevity.
 
 # Multiplying quaternions by unitary "complex numbers": geometrical interpretation of some quaternion multiplications
 
@@ -227,7 +237,7 @@ Applying the same rules about orthogonal components unaffected by rotations and 
 
 We finally have a chance to construct a rotation in only one plane. Let's just combine the transformations we've been looking at:
 
-[$\hat{u}(\theta}\hat{q}\hat{u}(\theta) = \mathcal{D}_{1 \rightarrow i}^{\theta}(\mathcal{D}_{k \rightarrow j}^{ -\theta}(\mathcal{D}_{1 \rightarrow i}^{\theta}(\mathcal{D}_{k \rightarrow j}^{\theta}(\hat{q}))))$]::
+[$\hat{u}(\theta)\hat{q}\hat{u}(\theta) = \mathcal{D}_{1 \rightarrow i}^{\theta}(\mathcal{D}_{k \rightarrow j}^{ -\theta}(\mathcal{D}_{1 \rightarrow i}^{\theta}(\mathcal{D}_{k \rightarrow j}^{\theta}(\hat{q}))))$]::
 
 Now since rotations in fully orthogonal planes commute with each other, and rotations in the same plane commute with each other, we can
 re-order the rotation operators:
@@ -245,7 +255,7 @@ Now we have a rotation in one plane!
 But what about the other plane? When we have a +θ on both sides, the rotations in the (1,i) plane have the same sign and
 the rotations in the (k,j) plane have opposite signs. What if we have opposite signs on either side?
 
-[$\hat{u}(-\theta}\hat{q}\hat{u}(\theta) = \mathcal{D}_{1 \rightarrow i}^{ -\theta}(\mathcal{D}_{k \rightarrow j}^{\theta}(\mathcal{D}_{1 \rightarrow i}^{\theta}(\mathcal{D}_{k \rightarrow j}^{\theta}(\hat{q}))))$]::
+[$\hat{u}(-\theta)\hat{q}\hat{u}(\theta) = \mathcal{D}_{1 \rightarrow i}^{ -\theta}(\mathcal{D}_{k \rightarrow j}^{\theta}(\mathcal{D}_{1 \rightarrow i}^{\theta}(\mathcal{D}_{k \rightarrow j}^{\theta}(\hat{q}))))$]::
 
 [$ = \mathcal{D}_{k \rightarrow j}^{ 2\theta}(\hat{q})$]::
 
@@ -380,7 +390,7 @@ considered to be in the positive direction around u<g>. Likewise, we have been i
 
 [$\mathcal{D}_{u_q, u_{qg}}^{\theta} \rightarrow \mathcal{D}_{\mathbf{Q}_g, u_g}^{\theta_g}$]::
 
-where now we only refer to the cross-plane ***Q***{g} with the positive orientation defined by u<sub>g</sub>. Now we have two ways to construct a single rotation
+where now we only refer to the cross-plane **Q**{g} with the positive orientation defined by u<sub>g</sub>. Now we have two ways to construct a single rotation
 using an arbitrary unit quaternion:
 
 [$\hat{g} \hat{q} \hat{g} = \mathcal{D}_{1 \rightarrow u_g}^{ 2\theta_g}(\hat{q}$]::
@@ -434,7 +444,7 @@ everything is commutative and we don't need to be clever. In other words, we hav
 where the rightmost expression reproduces the symmetric rotations above. We can't rotate the real part of a complex number using the conjugate representation,
 since it only affects imaginary parts. But if we write a 2-vector v = xi + yj, then:
 
-[$(\cos(\theta) + \sin(\theta) k)(xi + yj)(\cos(\theta) - \sin(\theta) k) = \mathcal{D}_{i \rightarrow j}^{2\theta}(xi + yj)$]::
+[$(\cos(\theta) + \sin(\theta) k)\hat{v}(\cos(\theta) - \sin(\theta) k) \equiv \mathcal{D}_{i \rightarrow j}^{2\theta}(\overrightarrow{v})$]::
 
 by a straightforward application of the formulas above. 
 
@@ -453,7 +463,7 @@ However, there is a significant advantage to the use of conjugates. First, notic
 
 But if we multiply *g* by a real number (magnitude) *G*, we get a different behavior:
 
-[$\hat{Gg}^ast = G\hat{g}^\ast = G\hat{g}^{-1} = G^2\hat{Gg}^{-1}$]::
+[$\hat{Gg}^\ast = G\hat{g}^\ast = G\hat{g}^{-1} = G^2\hat{Gg}^{-1}$]::
 
 where the last equality is established because multiplication by real numbers is always commutative (in math terms, **R** is the *center* of **H**). Now let's try
 putting these scale factors into each version of the rotation formula:
